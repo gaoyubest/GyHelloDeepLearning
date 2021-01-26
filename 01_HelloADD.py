@@ -7,10 +7,10 @@ import tensorflow as tf
 # result = tf.add(a, b)
 # print(result)
 # #
-tensor_constant_demo = tf.constant([
-    [1.1, 2.2, 3.3],
-    [4.4, 5.5, 6.6]
-], name='tensor_constant_demo', dtype=tf.float32)
+# tensor_constant_demo = tf.constant([
+#     [1.1, 2.2, 3.3],
+#     [4.4, 5.5, 6.6]
+# ], name='tensor_constant_demo', dtype=tf.float32)
 
 # 修改形状
 # value, dtype=None, shape=None
@@ -36,19 +36,27 @@ tensor_constant_demo = tf.constant([
 # tensor_fill = tf.fill([2, 3], 99, name=None)
 
 # 类型转换
-result_cast = tf.cast(tensor_constant_demo, tf.int32, name='result_cast')
-print(tensor_constant_demo.dtype, '=>', result_cast.dtype)
+# result_cast = tf.cast(tensor_constant_demo, tf.int32, name='result_cast')
+# print(tensor_constant_demo.dtype, '=>', result_cast.dtype)
+#
+# # 结构调整
+# result_reshape = tf.reshape(tensor_constant_demo, [3, 2], name='result_reshape')
+# print(tensor_constant_demo.shape, '=>', result_reshape.shape)
 
-# 结构调整
-result_reshape = tf.reshape(tensor_constant_demo, [3, 2], name='result_reshape')
-print(tensor_constant_demo.shape, '=>', result_reshape.shape)
+a = [[1, 2, 3], [4, 5, 6]]
+b = [[7, 8, 9], [10, 11, 12]]
+# 按行拼接
+c = tf.concat([a, b], axis=0)
+# 按列拼接
+d = tf.concat([a, b], axis=1)
+
 
 # Session
 with tf.Session() as sess:
-    print(sess.run(tensor_demo))
-    print(sess.run(tensor_demo1))
-    print(sess.run(tensor_demo2))
-    print(sess.run(tensor_fill))
+    # print(sess.run(tensor_demo))
+    # print(sess.run(tensor_demo1))
+    # print(sess.run(tensor_demo2))
+    # print(sess.run(tensor_fill))
     # print(sess.run(result))
     # print(sess.run([a, b, result]))
     # print(tensor_constant_demo.shape)
@@ -57,4 +65,7 @@ with tf.Session() as sess:
     # print("-"*80)
     # print(tensor_constant_demo)
     # print("-"*80)
-    # print(tensor_constant_demo.op)
+    # # print(tensor_constant_demo.op)
+    # print(sess.run(result_cast))
+    print(sess.run(c))
+    print(sess.run(d))
