@@ -1,28 +1,3 @@
-[TOC]
-
-# 变量
-
-- op、特殊的张量，能供进行存储持久化，它的值就是张量，默认被训练。
-
-## 定义变量
-
-```python
-tf.Variable(tf.random_normal([2, 3], mean=0.0, stddev=1.0), name='var2')
-```
-
-- 定义变量一定要`初始化`，会话中要`运行初始化`。
-
-```python
-tf.global_variables_initializer()
-
-with tf.Session() as sess:
-    # 必须运行初始化op
-    sess.run(init_op)
-```
-
-例子如下：
-
-```python
 import tensorflow as tf
 
 a = tf.constant([1, 2, 3, 4, 5, 6])
@@ -45,6 +20,3 @@ Tensor("Const:0", shape=(6,), dtype=int32) <tf.Variable 'var2:0' shape=(2, 3) dt
 
 [array([1, 2, 3, 4, 5, 6]), array([[ 1.402069  , -1.3446612 , -1.1300074 ],
        [ 0.5087003 , -1.035823  , -0.64893395]], dtype=float32)]
-```
-
-## 可视化
